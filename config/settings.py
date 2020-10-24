@@ -124,10 +124,28 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+"""
+各アプリケーションに紐付ける静的ファイル場所
+"""
 STATIC_URL = '/static/'
+
+"""
+各アプリケーションに紐づいていない、その他の静的ファイル場所
+"""
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+"""
+djangoでは静的ファイルを、
+①メインプロジェクト直下　②各アプリケーション　に作成することができる。
+共通の静的ファイルはメインに、アプリ毎の静的ファイルはそれぞれにすることができる。
+
+ただ、デプロイするときは①、②をまとめる必要がある。
+これを　"python manage.py collectstatic"　である。
+
+そしてcollectstaticしたフォルダ、ファイルを置く場所を指定するのが "STATIC_ROOT"
+"""
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 try:
